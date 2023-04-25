@@ -62,11 +62,12 @@ class _TabsScreenState extends State<TabsScreen> {
       activePageTitle = 'Favorites';
     }
 
-    void _setScreen(String identifier) {
+    void _setScreen(String identifier) async {
       Navigator.of(context).pop();
       if (identifier == 'filters') {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (ctx) => const FiltersScreen()));
+        final result = await Navigator.of(context).push<Map<Filter, bool>>(
+            MaterialPageRoute(builder: (ctx) => const FiltersScreen()));
+        print(result);
       }
     }
 
